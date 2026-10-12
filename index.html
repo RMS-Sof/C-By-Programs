@@ -1,63 +1,263 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>FCP Concept Map (c) RMS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C in 25 Programs (c) RMS</title>
 <style>
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f4ef;--card:#fff;--ink:#1d2330;--mut:#667085;--ln:#b9b2a2;--vid:#b42318;--vbg:#fdecea;--tl:#0f766e;--tbg:#e3f5f2}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11151c;--card:#1a202b;--ink:#e8eaef;--mut:#98a2b3;--ln:#3a4456;--vid:#fda29b;--vbg:#3a1c1a;--tl:#5eead4;--tbg:#12332f}}
-:root[data-theme="dark"]{--bg:#11151c;--card:#1a202b;--ink:#e8eaef;--mut:#98a2b3;--ln:#3a4456;--vid:#fda29b;--vbg:#3a1c1a;--tl:#5eead4;--tbg:#12332f}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+:root{--ink:#14213d;--paper:#fffdf7;--bg:#e9eef3;--line:#cfd8e2;--c1:#e4572e;--c2:#17a398;--c3:#e8a200;--c4:#5b4bd6}
+@media(prefers-color-scheme:dark){:root{--ink:#e8edf5;--paper:#1b2638;--bg:#0f1724;--line:#1f2c42}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.4 "Segoe UI",system-ui,sans-serif}
-header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 16px;background:var(--card);border-bottom:1px solid var(--ln);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
-h1{margin:0;font:700 17px Georgia,serif;flex:1;min-width:220px}
-h1 small{display:block;font:400 12px "Segoe UI",sans-serif;color:var(--mut)}
-input{padding:7px 10px;border:1px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--ink);min-width:200px}
-button{font:inherit;cursor:pointer;border:1px solid var(--ln);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 12px}
-.leg{display:flex;gap:14px;font-size:12.5px;color:var(--mut);padding:8px 16px}
-.map{display:flex;align-items:center;padding:8px 16px 24px;max-width:1500px;margin:auto}
-.root{flex:none;width:130px;text-align:center;padding:18px 10px;border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;background:var(--ink);color:var(--bg);font:700 15px Georgia,serif}
-.root small{font:400 11px "Segoe UI",sans-serif;opacity:.8}
-.brs{flex:1;margin-left:28px;border-left:2px solid var(--ln);min-width:0}
-.br{position:relative;display:flex;gap:14px;padding:10px 0 10px 30px}
-.br::before{content:"";position:absolute;left:0;top:28px;width:30px;border-top:2px solid var(--ln)}
-.un{flex:none;width:170px;align-self:flex-start;padding:8px 10px;border-radius:10px;background:var(--card);border:2px solid var(--c);font-weight:700;font-size:13.5px;position:relative}
-.un::after{content:"";position:absolute;right:-14px;top:50%;width:14px;border-top:2px solid var(--ln)}
-.un span{display:block;font-weight:400;font-size:11.5px;color:var(--mut)}
-.it{flex:1;min-width:0;border-left:2px solid var(--ln);padding-left:12px;display:flex;flex-direction:column;gap:6px}
-.row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.row i{font-style:normal;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);width:62px;flex:none}
-a.n{display:inline-block;padding:4px 10px;border-radius:999px;text-decoration:none;font-size:12.5px;border:1px solid transparent;transition:.12s}
-a.v{background:var(--vbg);color:var(--vid)}a.t{background:var(--tbg);color:var(--tl)}
-a.n:hover{transform:translateY(-1px);border-color:currentColor;box-shadow:0 2px 6px rgba(0,0,0,.15)}
-a.n:visited{opacity:.65}
-.dim{opacity:.18;pointer-events:none}
-@media(max-width:900px){.map{flex-direction:column;align-items:stretch}.root{align-self:center;width:110px;margin-bottom:12px}.brs{margin-left:0;border-left:0}.br{flex-direction:column;padding-left:0}.br::before,.un::after{display:none}.un{width:100%}.it{border-left:0;padding-left:0}.row i{width:100%}}
-</style></head><body>
-<header>
-<h1>FCP Teaching-Learning ·  Prof. Rahul M. Samant<small>FCP Knowledge Map · click any node to open it in a new tab · Concept Videos & Tools</small></h1>
-<input type="search" id="q" placeholder="Filter nodes…"><button id="th">◐</button>
-</header>
-<div class="leg"><span style="color:var(--vid)">▶ Lecture video (YouTube)</span><span style="color:var(--tl)">◆ Test / quiz / tool (GitHub page, etc.)</span></div>
-<div class="map"><div class="root">FCP<small>C Programming</small></div><div class="brs" id="m"></div></div>
+html,body{height:100%;margin:0}
+body{font:16px/1.5 system-ui,sans-serif;color:var(--ink);background:var(--bg);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:28px 28px;display:flex}
+nav{width:230px;flex:none;height:100%;overflow:auto;padding:14px 10px;background:var(--paper);border-right:2px solid var(--ink)}
+nav h1{font:700 20px/1.2 Georgia,serif;margin:0 6px 12px}
+nav button{display:flex;gap:8px;width:100%;text-align:left;border:0;background:none;color:inherit;font:inherit;font-size:15px;padding:6px 8px;border-radius:6px;cursor:pointer}
+nav button b{width:24px;color:var(--c1);font-family:ui-monospace,monospace;font-weight:700}
+nav button:hover{background:var(--line)}
+nav button.on{background:var(--ink);color:var(--paper)}
+nav button.on b{color:var(--c3)}
+main{flex:1;height:100%;overflow:auto;padding:18px 22px;display:flex;flex-direction:column;min-width:0}
+header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+header h2{font:700 28px/1.2 Georgia,serif;margin:0;flex:1}
+.ctl{border:2px solid var(--ink);background:var(--paper);color:var(--ink);font:inherit;font-weight:600;padding:6px 14px;border-radius:999px;cursor:pointer}
+.ctl:hover{background:var(--ink);color:var(--paper)}
+.grid{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:minmax(250px,1fr);gap:16px}
+.tile{perspective:1100px;min-height:250px}
+.in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.tile.on .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;border:2px solid var(--ink);padding:16px 18px;display:flex;flex-direction:column;overflow:auto}
+.front{color:#fff;align-items:flex-start;justify-content:space-between;box-shadow:6px 6px 0 var(--ink)}
+.front .g{font-size:44px;line-height:1}
+.front h3{font:700 26px Georgia,serif;margin:0}
+.front p{margin:2px 0 0;opacity:.85;font-size:18px}
+.back{background:var(--paper);transform:rotateY(180deg);box-shadow:6px 6px 0 var(--k)}
+.back h3{margin:0 0 8px;font:700 16px Georgia,serif;color:var(--k)}
+.back p{margin:0;font-size:20px}
+pre{margin:0;font:22px/1.45 ui-monospace,Consolas,monospace;white-space:pre;overflow:auto;flex:1}
+.out{background:#101826;color:#7dffb2;border-radius:8px;padding:12px;font:16px/1.5 ui-monospace,monospace;white-space:pre-wrap;flex:1}
+.out small{color:#9fb0c8;display:block;margin-top:8px;font-size:13px}
+.btn{margin-top:10px;align-self:flex-start;border:2px solid currentColor;background:transparent;color:inherit;font:inherit;font-weight:700;padding:5px 16px;border-radius:999px;cursor:pointer}
+.front .btn{color:#fff}.front .btn:hover{background:#fff;color:var(--ink)}
+.back .btn{color:var(--ink)}.back .btn:hover{background:var(--ink);color:var(--paper)}
+button:focus-visible{outline:3px solid var(--c3);outline-offset:2px}
+@media(max-width:820px){body{flex-direction:column}nav{width:100%;height:auto;display:flex;gap:4px;overflow-x:auto;border-right:0;border-bottom:2px solid var(--ink);padding:8px}nav h1{display:none}nav button{width:auto;white-space:nowrap}main{padding:12px}.grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.in{transition:none}}
+</style></head>
+<body>
+<nav id="nav"><h1>C Language (c) Rahul Samant</h1></nav>
+<main>
+<header><h2 id="ttl"></h2><button class="ctl" id="all">Reveal all</button><button class="ctl" id="prev">Previous</button><button class="ctl" id="next">Next</button></header>
+<div class="grid" id="grid"></div>
+</main>
 <script>
-const S="https://script.google.com/macros/s/",E="/exec",G="https://rms-sof.github.io/";
-const U=[
-["0 · Orientation & fundamentals","#7c3aed",[["FCP Lab information","GhhRnwF_nsk"],["FCP 0 Computer Programming","VeCdA5cO3Rw"],["FCP 0.1 Programming Process","SQoHr5DYUo4"],["FCP 1 TH1 Hardware & Software","6Q1Id-HrZkI"],["FCP 2 TH2 Internet Architecture & Cyber Security","HVWoo8sCMKI"]],[17,8,4]],
-["1 · Introduction to C","#2563eb",[["FCP 3.0 Introduction to C","51kksOUUmlo"],["FCP 3.1 Intro with more examples","jrzrPzyg4LI"],["FCP 3.2 C Programming Introduction","mtg4xNfZsUc"],["FCP 3.3 Intro to C (part 4)","lD48EUaclkY"],["FCP 4 C Programs List","uvgGJCIvlF8"],["FCP 4.1 Data Types & Scientific apps","nicoBWmio2c"],["FCP 5.1 C from a linguistic view","CM2lElJ8ZaA"]],[6,18,14,1,9]],
-["2 · Control flow, arrays, functions, strings","#0891b2",[["FCP 6 Control Flows, Array & Functions","t872IwqYk4w"],["FCP Extra 9.3.1 Loops & 1-D Array","UEVa-PDFV8M"],["FCP 6.1 Recursion","xRvYGRDi4qs"],["FCP 7.1 Strings","ivlKbkR5Yg8"]],[19,10,12]],
-["3 · Pointers & dynamic memory","#16a34a",[["FCP 7.2 Pointers & Dynamic memory","VssWs7I2dXo"],["FCP 7.2 Pointers by Programming","VBZnOh2rSxs"]],[19,20,18,13]],
-["4 · Structures, unions & files","#ca8a04",[["FCP 8 Structure, Union & File handling","2QbYiLB0Y4I"],["FCP 8.1 Structures by Programming","mdcTgBRHJ4U"],["FCP 9.4 Files by Programming","yt2mHqJ7b3I"]],[20,15]],
-["5 · Debugging & programming skills","#ea580c",[["FCP 8.1 Safe Programming & Debugging","2W-1T0ZZqcU"],["FCP 12 Programming Skills","-8TTk8nSE74"],["FCP 13 Lord Ganesha Wisdom & Skills","HiLVD-i8GWM"],["FCP 14 Challenges in Learning C","hP1gV1oD4J4"]],[13,3,11]],
-["6 · Revision, practice & beyond","#db2777",[["FCP 9.1 Chapter 1 & 2","Hm4Q1k1FaWU"],["FCP 9.2 Chapter 3 & 4","IDZJB2EttvE"],["FCP 9.3 Chapter 8 & 13","WuM86AieAYw"],["FCP 9.∞ Cryptic C","cHRr4-HrlUs"],["FCP 10 Gamification of C","Oft0dSIZO0Y"],["FCP 15 Exercise & Tests","2lFaajGl928"],["Building Calculator using Agents","o7-KpNEz2O0"]],[2,16,11,7,5,0]]];
-const T=[["Student Picker",G+"Coronation/"],["C Programming Skill Test",G+"C-Skill-Test/"],["FCP Skill Test",G+"FCP-skill-Test/"],["Problem Solving Skill Test",G+"Problem-Solving-Skill-Test/"],["Language Proficiency Tester",G+"Language-Profeciency-Tester/"],
-["Supporting Tool",S+"AKfycbxrAgJ9I1CRH69UHyBPArDZIHF2pOoIPoGmP44lnFJFWIrpzD81DTYqjI8epcUJY6qK"+E],["C Programming Overview",G+"C-Programming/"],["Agentic Calculator App","https://agent3-kqzfcvap9pxxs7n4ftn8gg.streamlit.app/"],["Entire Contents (Knowledge Graph)",G+"FCP-Knowledge-Graph/"],
-["Quiz 1 (simple)",S+"AKfycbwpevnaXZrRKKug5ofeiSXGLVI0HBcgHyy9GlBchJGPWpfDiQD5SgaA_dHWWBwY_9-NAQ"+E],["Quiz 2 (simple)",S+"AKfycbxqspEv9V5aMJ6cb8XxQhKZuvxiA-S54E9aygyejPGGgAgU24AxVxM75hcbpcf6xhvP"+E],["Quiz 3 (difficult)",S+"AKfycbwWMk9pwHJZrAr555cZ0y0zwaNQPFI0llgq6cy8vkiJS27QgEAuxor6wiNIcQY0jUoarQ"+E],
-["Learn C by Games",G+"C-By-Games/"],["C Debug-Code Quiz",S+"AKfycbwUrHEBN5cku4SGkaQGxFez9CycaFoWSf2_NICEic7WIZBG9xoUGzqA0l8LlSsm6U_v8g"+E],["C Library Functions",G+"C-Lib-Functions/"],
-["Concept Quiz",S+"AKfycbxxE6l5NKzpYEdBoAYfDpGnRuwVS7ymZpLm56zSuirFb2nR2BLMuXyhzAdtAcD8E6qh"+E],["Advance Concept Quiz",S+"AKfycbwzvDMPDHrCCA06mW_tRiIThMxIYpqzChLo--XOkFC_pvqJ2lwFStZyiYO5m90XIQ0B"+E],
-["DNS & Firewall Animations",G+"FCP2-animations/"],["Mental Model for C",G+"C-Mental-Model/"],["C Concepts Visualized 1",G+"C-Visualized/"],["C Concepts Visualized 2",G+"C-Visualized-Part2/"]];
-const L=(c,h,t,x)=>`<a class="n ${c}" href="${h}" target="_blank" rel="noopener noreferrer">${x}${t}</a>`;
-document.getElementById("m").innerHTML=U.map(u=>`<div class="br" style="--c:${u[1]}"><div class="un">${u[0]}<span>${u[2].length} videos · ${u[3].length} tools</span></div><div class="it"><div class="row"><i>Lectures</i>${u[2].map(v=>L("v","https://youtu.be/"+v[1],v[0],"▶ ")).join("")}</div><div class="row"><i>Practice</i>${u[3].map(i=>L("t",T[i][1],T[i][0],"◆ ")).join("")}</div></div></div>`).join("");
-document.getElementById("q").oninput=e=>{const q=e.target.value.toLowerCase();document.querySelectorAll("a.n").forEach(a=>a.classList.toggle("dim",!!q&&!a.textContent.toLowerCase().includes(q)))};
-document.getElementById("th").onclick=()=>{const r=document.documentElement,d=r.dataset.theme=="dark"||(!r.dataset.theme&&matchMedia("(prefers-color-scheme:dark)").matches);r.dataset.theme=d?"light":"dark"};
+const R=String.raw;
+const P=[
+["Hello, World","main(), #include, printf","Every C program starts at main(). printf sends text to the screen.",R`#include <stdio.h>
+int main(void){
+    printf("Hello, C!\n");
+    return 0;
+}`,"Hello, C!"],
+["Variables and types","int, float, char, format specifiers","A variable is a labelled box. Its type decides box size and how bits are read.",R`#include <stdio.h>
+int main(void){
+    int a=7; float f=3.5f; char c='A';
+    printf("%d %.1f %c\n",a,f,c);
+    return 0;
+}`,"7 3.5 A"],
+["Operators","/, %, integer vs float division","Two ints give an int result: the fraction is dropped. Make one side float to keep it.",R`#include <stdio.h>
+int main(void){
+    printf("%d %d %.1f\n",17/5,17%5,17/5.0);
+    return 0;
+}`,"3 2 3.4"],
+["Input with scanf","scanf, & address-of","scanf needs the address of the box to drop the typed value into.",R`#include <stdio.h>
+int main(void){
+    int n;
+    scanf("%d",&n);
+    printf("Double: %d\n",n*2);
+    return 0;
+}`,"Input: 6\nDouble: 12"],
+["if - else","Decision making, relational operators","A fork in the road: the condition picks exactly one path.",R`#include <stdio.h>
+int main(void){
+    int n=7;
+    if(n%2==0) printf("%d is even\n",n);
+    else printf("%d is odd\n",n);
+    return 0;
+}`,"7 is odd"],
+["switch","Multi-way choice, case, break","A dial with labelled positions. break stops you falling into the next case.",R`#include <stdio.h>
+int main(void){
+    int d=3;
+    switch(d){
+        case 1: printf("Mon\n"); break;
+        case 3: printf("Wed\n"); break;
+        default: printf("Other\n");
+    }
+    return 0;
+}`,"Wed"],
+["for loop","Counted repetition, accumulator","Start, test, step: a counter walks along while a running total grows.",R`#include <stdio.h>
+int main(void){
+    int s=0;
+    for(int i=1;i<=5;i++) s+=i;
+    printf("Sum = %d\n",s);
+    return 0;
+}`,"Sum = 15"],
+["while loop","Unknown iteration count, % and /","Keep peeling digits with % 10 and / 10 until nothing is left.",R`#include <stdio.h>
+int main(void){
+    int n=1234,r=0;
+    while(n>0){ r=r*10+n%10; n/=10; }
+    printf("%d\n",r);
+    return 0;
+}`,"4321"],
+["do - while","Run at least once","Act first, ask later: the test sits at the bottom of the loop.",R`#include <stdio.h>
+int main(void){
+    int n=3;
+    do{ printf("%d ",n); n--; }while(n>0);
+    return 0;
+}`,"3 2 1"],
+["break and continue","Loop control","continue skips the rest of this lap. break leaves the track.",R`#include <stdio.h>
+int main(void){
+    for(int i=1;i<=6;i++){
+        if(i==3) continue;
+        if(i==5) break;
+        printf("%d ",i);
+    }
+    return 0;
+}`,"1 2 4"],
+["Nested loops","Patterns, loop inside loop","The outer loop picks the row. The inner loop fills that row.",R`#include <stdio.h>
+int main(void){
+    for(int r=1;r<=3;r++){
+        for(int c=1;c<=r;c++) printf("*");
+        printf("\n");
+    }
+    return 0;
+}`,"*\n**\n***"],
+["Functions","Prototype, parameters, return","A small machine: values go in, one value comes out. Parameters are copies.",R`#include <stdio.h>
+int square(int x){ return x*x; }
+int main(void){
+    printf("%d\n",square(5));
+    return 0;
+}`,"25"],
+["Recursion","Base case, self-call, call stack","A function calls a smaller copy of itself. Frames stack up, then unwind.",R`#include <stdio.h>
+int fact(int n){
+    if(n<=1) return 1;
+    return n*fact(n-1);
+}
+int main(void){
+    printf("%d\n",fact(5));
+    return 0;
+}`,"120"],
+["Arrays","Index from 0, traversal, max","A row of same-type lockers numbered from 0. Scan them one by one.",R`#include <stdio.h>
+int main(void){
+    int a[5]={4,9,2,7,5}, m=a[0];
+    for(int i=1;i<5;i++) if(a[i]>m) m=a[i];
+    printf("Max = %d\n",m);
+    return 0;
+}`,"Max = 9"],
+["2D arrays","Rows and columns, nested access","A grid of lockers: m[row][col]. Two loops visit every cell.",R`#include <stdio.h>
+int main(void){
+    int m[2][3]={{1,2,3},{4,5,6}}, t=0;
+    for(int i=0;i<2;i++)
+        for(int j=0;j<3;j++) t+=m[i][j];
+    printf("m[1][2]=%d total=%d\n",m[1][2],t);
+    return 0;
+}`,"m[1][2]=6 total=21"],
+["Strings","char array, '\\0', string.h","A string is chars followed by a hidden zero byte that marks the end.",R`#include <stdio.h>
+#include <string.h>
+int main(void){
+    char s[]="hello";
+    printf("%s has %zu chars\n",s,strlen(s));
+    return 0;
+}`,"hello has 5 chars"],
+["Pointers","&, *, indirection","A pointer holds a house address. *p walks there and changes what is inside.",R`#include <stdio.h>
+int main(void){
+    int x=10, *p=&x;
+    *p=20;
+    printf("%d\n",x);
+    return 0;
+}`,"20"],
+["Pointer arithmetic","Array name as pointer, p+1","p+1 moves one element, not one byte. a[i] is just *(a+i).",R`#include <stdio.h>
+int main(void){
+    int a[]={10,20,30}, *p=a;
+    printf("%d %d\n",*(p+1),*(a+2));
+    return 0;
+}`,"20 30"],
+["Call by reference","Pointer parameters, swap","Give the function the address, not a copy, so it can edit your variables.",R`#include <stdio.h>
+void swap(int *x,int *y){ int t=*x; *x=*y; *y=t; }
+int main(void){
+    int a=1,b=2;
+    swap(&a,&b);
+    printf("a=%d b=%d\n",a,b);
+    return 0;
+}`,"a=2 b=1"],
+["Structures","struct, members, dot operator","One record card that groups different types under a single name.",R`#include <stdio.h>
+struct Student{ int roll; float cgpa; };
+int main(void){
+    struct Student s={21,8.5f};
+    printf("Roll %d, CGPA %.1f\n",s.roll,s.cgpa);
+    return 0;
+}`,"Roll 21, CGPA 8.5"],
+["Unions","Shared memory, sizeof","All members share one memory slot. Writing one overwrites the others.",R`#include <stdio.h>
+union U{ int i; char c; };
+int main(void){
+    union U u; u.i=65;
+    printf("size=%zu c=%c\n",sizeof(u),u.c);
+    return 0;
+}`,"size=4 c=A\n(little-endian machine)"],
+["Dynamic memory","malloc, free, heap","Rent space from the heap at run time. Return it with free() when done.",R`#include <stdio.h>
+#include <stdlib.h>
+int main(void){
+    int *p=malloc(3*sizeof(int));
+    for(int i=0;i<3;i++){ p[i]=i*i; printf("%d ",p[i]); }
+    free(p);
+    return 0;
+}`,"0 1 4"],
+["File I/O","fopen, fprintf, fgets, fclose","A file is a stream: open it, write or read, then close it.",R`#include <stdio.h>
+int main(void){
+    FILE *f=fopen("t.txt","w");
+    fprintf(f,"C is fun");
+    fclose(f);
+    char b[20]; f=fopen("t.txt","r");
+    fgets(b,20,f); fclose(f);
+    printf("%s\n",b);
+    return 0;
+}`,"C is fun"],
+["Macros and enums","#define, enum","#define swaps text before compiling. enum gives names to small integers.",R`#include <stdio.h>
+#define PI 3.14
+enum Color{RED,GREEN,BLUE};
+int main(void){
+    printf("%d %.2f\n",GREEN,PI*2*2);
+    return 0;
+}`,"1 12.56"],
+["Bitwise operators","&, |, ^, <<","Work on single bits: 6 is 110, 3 is 011. Shifting left doubles.",R`#include <stdio.h>
+int main(void){
+    printf("%d %d %d %d\n",6&3,6|3,6^3,6<<1);
+    return 0;
+}`,"2 7 5 12"]
+];
+const T=[["Concepts","◈","var(--c1)"],["Mental model","◎","var(--c2)"],["Program","{ }","var(--c4)"],["Output","▶","var(--c3)"]];
+const $=id=>document.getElementById(id);
+let cur=0;
+P.forEach((p,i)=>{const b=document.createElement("button");b.innerHTML="<b>"+(i+1)+"</b><span></span>";b.lastChild.textContent=p[0];b.onclick=()=>go(i);$("nav").appendChild(b)});
+function go(i){
+  cur=(i+P.length)%P.length;const p=P[cur];
+  [...$("nav").querySelectorAll("button")].forEach((b,j)=>b.classList.toggle("on",j==cur));
+  $("nav").children[cur+1].scrollIntoView({block:"nearest"});
+  $("ttl").textContent=(cur+1)+". "+p[0];
+  const g=$("grid");g.textContent="";
+  T.forEach((t,k)=>{
+    const d=document.createElement("div");d.className="tile";d.style.setProperty("--k",t[2]);
+    d.innerHTML='<div class="in"><div class="face front"><span class="g">'+t[1]+'</span><div><h3>'+t[0]+'</h3><p>Hidden. Think first, then reveal.</p></div><button class="btn">Reveal</button></div><div class="face back"><h3>'+t[0]+'</h3><div class="body" style="flex:1;display:flex;flex-direction:column;min-height:0"></div><button class="btn">Hide</button></div></div>';
+    d.querySelector(".front").style.background=t[2];
+    const body=d.querySelector(".body");let el;
+    if(k==2){el=document.createElement("pre");el.textContent=p[3]}
+    else if(k==3){el=document.createElement("div");el.className="out";el.textContent=p[4]}
+    else{el=document.createElement("p");el.textContent=p[k+1==1?1:2]}
+    body.appendChild(el);
+    d.querySelectorAll(".btn").forEach(b=>b.onclick=()=>d.classList.toggle("on"));
+    g.appendChild(d);
+  });
+}
+let all=false;
+$("all").onclick=()=>{all=!all;document.querySelectorAll(".tile").forEach(t=>t.classList.toggle("on",all));$("all").textContent=all?"Hide all":"Reveal all"};
+$("prev").onclick=()=>{all=false;$("all").textContent="Reveal all";go(cur-1)};
+$("next").onclick=()=>{all=false;$("all").textContent="Reveal all";go(cur+1)};
+document.addEventListener("keydown",e=>{if(e.key=="ArrowDown"||e.key=="ArrowRight")$("next").click();if(e.key=="ArrowUp"||e.key=="ArrowLeft")$("prev").click()});
+go(0);
 </script></body></html>
